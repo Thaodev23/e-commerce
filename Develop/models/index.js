@@ -4,13 +4,40 @@ const Category = require('./Category');
 const Tag = require('./Tag');
 const ProductTag = require('./ProductTag');
 
-// Products belongsTo Category
+// Below: from line 8 to 39 => references each sequelize model relationship. 
+Product.belongsTo(Category, {
+  foreignKey: 'category_id',
+  targetKey: 'id',
+  onDelete: 'CASCADE',
+  allowNull: false
+}
+);
 
-// Categories have many Products
+Category.hasMany(Product, {
+  foreignKey: 'category_id',
+  targetKey: 'id',
+  onDelete: 'CASCADE',
+  allowNull: false
+})
 
-// Products belongToMany Tags (through ProductTag)
+Product.belongsToMany(Tag, {
+  through: {
+    model: ProductTag,
+    unique: false
+  },
 
-// Tags belongToMany Products (through ProductTag)
+  as: 'Product_Tag'
+})
+
+Tag.belongsToMany(Product, {
+  through: {
+    model: ProductTag,
+    unique: false
+  },
+
+  as: 'Tag_product'
+})
+
 
 module.exports = {
   Product,
