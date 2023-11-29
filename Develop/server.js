@@ -1,3 +1,8 @@
+// Author: Joey Thao
+// Collaborators: Jason Yang, Sichoun Lee
+// Date: 11/28/2023
+// Description: e-commerce. 
+
 const express = require('express');
 const routes = require('./routes');
 // import sequelize connection
