@@ -1,13 +1,12 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Product extends Model {}
+class Product extends Model { }
 
-
+// Below: id are necessary to have. Each product are required to have a category.
 Product.init(
   {
-//  Below: id are necessary to have. Each product are required to have a category. 
-id: {
+    id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
